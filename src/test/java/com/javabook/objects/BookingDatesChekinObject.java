@@ -3,8 +3,6 @@ import lombok.*;
 
 @Data
 @Builder
-public class BookingDatesObject {
+public class BookingDatesChekinObject {
     private String checkin;
-    private String checkout;
-
 }
