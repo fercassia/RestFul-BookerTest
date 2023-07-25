@@ -3,9 +3,8 @@ package com.javabook.tests;
 import com.javabook.bases.BaseSetup;
 import com.javabook.buildData.BuildBookingData;
 import com.javabook.objects.BookingObject;
-import io.restassured.RestAssured;
+import com.javabook.token.GenerateToken;
 import org.apache.http.HttpStatus;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
@@ -31,7 +30,7 @@ public class putBooking extends BaseSetup {
 
         given().body(bookingObject)
                 .when()
-                .header("Cookie", "token="+postGenerateTokenTest.generateValidToken())
+                .header("Cookie", "token="+ GenerateToken.generateValidToken())
                 .put("/booking/"+bookingId)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
