@@ -29,14 +29,14 @@ public class postBokingTest extends BaseSetup {
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .assertThat()
-                .body("bookingid", notNullValue(Integer.class))
-                .body("booking. firstname",equalTo(bookingObject.getFirstname()))
-                .body("booking.lastname",equalTo(bookingObject.getLastname()))
-                .body("booking.totalprice",equalTo(bookingObject.getTotalprice()))
-                .body("booking.depositpaid",equalTo(bookingObject.isDepositpaid()))
-                .body("booking.bookingdates.checkin",equalTo(bookingObject.getBookingdates().getCheckin()))
-                .body("booking.bookingdates.checkout",equalTo(bookingObject.getBookingdates().getCheckout()))
-                .body("booking.additionalneeds",equalTo(bookingObject.getAdditionalneeds()))
+                .body("bookingid", notNullValue(),
+                        "booking.firstname",equalTo(bookingObject.getFirstname()),
+                        "booking.lastname",equalTo(bookingObject.getLastname()),
+                        "booking.totalprice",equalTo(bookingObject.getTotalprice()),
+                        "booking.depositpaid",equalTo(bookingObject.isDepositpaid()),
+                        "booking.bookingdates.checkin",equalTo(bookingObject.getBookingdates().getCheckin()),
+                        "booking.bookingdates.checkout",equalTo(bookingObject.getBookingdates().getCheckout()),
+                        "booking.additionalneeds",equalTo(bookingObject.getAdditionalneeds()))
                 .extract()
                 .path("bookingid");
     }
@@ -51,14 +51,14 @@ public class postBokingTest extends BaseSetup {
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .assertThat()
-                .body("bookingid", notNullValue())
-                .body("booking. firstname",equalTo(bookingObject.getFirstname()))
-                .body("booking.lastname",equalTo(bookingObject.getLastname()))
-                .body("booking.totalprice",equalTo(bookingObject.getTotalprice()))
-                .body("booking.depositpaid",equalTo(bookingObject.isDepositpaid()))
-                .body("booking.bookingdates.checkin",equalTo(bookingObject.getBookingdates().getCheckin()))
-                .body("booking.bookingdates.checkout",equalTo(bookingObject.getBookingdates().getCheckout()))
-                .body("booking.additionalneeds",equalTo(bookingObject.getAdditionalneeds()))
+                .body("bookingid", notNullValue(),
+                        "booking.firstname",equalTo(bookingObject.getFirstname()),
+                        "booking.lastname",equalTo(bookingObject.getLastname()),
+                        "booking.totalprice",equalTo(bookingObject.getTotalprice()),
+                        "booking.depositpaid",equalTo(bookingObject.isDepositpaid()),
+                        "booking.bookingdates.checkin",equalTo(bookingObject.getBookingdates().getCheckin()),
+                        "booking.bookingdates.checkout",equalTo(bookingObject.getBookingdates().getCheckout()),
+                        "booking.additionalneeds",equalTo(bookingObject.getAdditionalneeds()))
                 .extract()
                 .path("bookingid");
     }
