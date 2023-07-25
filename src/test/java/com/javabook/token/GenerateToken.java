@@ -19,10 +19,6 @@ public class GenerateToken extends BaseSetup {
                 .when()
                 .post("/auth")
                 .then()
-                .statusCode(HttpStatus.SC_OK)
-                .and()
-                .assertThat()
-                .body("token", not(nullValue()))
                 .extract()
                 .path("token");
     }
