@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-public class putBooking extends BaseSetup {
+public class putBookingTest extends BaseSetup {
     private BookingObject bookingObject;
     private PartialBookingNamesAndPriceObject partialBookingNamesAndPriceObject;
     private PartialBookingWithoutAdditionalNeedsObject partialBookingWithoutAdditionalNeedsObject;

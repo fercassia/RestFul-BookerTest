@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class patchBooking extends BaseSetup {
+public class patchBookingTest extends BaseSetup {
     private PartialBookingNamesAndPriceObject partialBookingNamesAndPriceObject;
     private PartialBookingNamesObject partialBookingNamesObject;
     private PartialBookingAdditionalNeedsObject partialBookingAdditionalNeedsObject;
