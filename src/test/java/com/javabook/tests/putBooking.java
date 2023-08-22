@@ -89,4 +89,20 @@ public class putBooking extends BaseSetup {
                 .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST);
     }
+    @Test (groups = "Exception")
+    public void updateErrorAIdNonexistent(){
+        //Creating a booking
+        int booking = 1;
+        //Updating the booking
+        BuildBookingData builderBookingData = new BuildBookingData();
+        bookingObject = builderBookingData.BookingDataBuilderDepositPaidFalse();
+
+        //Verify the bookig updated
+        given().body(bookingObject)
+                .when()
+                .header("Cookie", "token="+ GenerateToken.generateValidToken())
+                .put("/booking/"+booking)
+                .then()
+                .statusCode(HttpStatus.SC_NOT_FOUND);
+    }
 }
