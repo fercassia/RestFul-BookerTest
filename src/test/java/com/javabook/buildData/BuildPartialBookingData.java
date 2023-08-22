@@ -75,4 +75,19 @@ public class BuildPartialBookingData {
                 .additionalneeds("Diner")
                 .build();
     }
+    public PartialBookingNamesObject PartialBookingNames (){//400-[POST]Bad request
+        Faker faker = Faker.instance();
+
+        return PartialBookingNamesObject.builder()
+                .firstname(faker.name().firstName())
+                .lastname(faker.name().lastName())
+                .build();
+    }
+    public PartialBookingAdditionalNeedsObject PartialBookingAdditionalNeeds (){//400-[POST]Bad request
+        Faker faker = Faker.instance();
+
+        return PartialBookingAdditionalNeedsObject.builder()
+                .additionalneeds(String.valueOf(faker.food()))
+                .build();
+    }
 }

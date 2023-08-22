@@ -22,7 +22,7 @@ public class putBooking extends BaseSetup {
     @Test (groups = "Main")
     public void updateBookintTestPaidToFalse(){
         //Creating a booking
-        int booking = GenerateBooking.generateBookingValid();
+        int bookingID = GenerateBooking.generateBookingValid();
         //Updating the booking
         BuildBookingData builderBookingData = new BuildBookingData();
         bookingObject = builderBookingData.BookingDataBuilderDepositPaidFalse();
@@ -31,7 +31,7 @@ public class putBooking extends BaseSetup {
         given().body(bookingObject)
                 .when()
                 .header("Cookie", "token="+ GenerateToken.generateValidToken())
-                .put("/booking/"+booking)
+                .put("/booking/"+bookingID)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .and()
@@ -48,7 +48,8 @@ public class putBooking extends BaseSetup {
     @Test (groups = "Alternative")
     public void updateBookintTestWithoutAddicionalNeeds(){
         //Creating a booking
-        int booking = GenerateBooking.generateBookingValid();
+        int bookingID = GenerateBooking.generateBookingValid();
+        BookingObject bookingInformation = GenerateBooking.bookingObjectGenerated;
 
         //Updating the booking
         BuildPartialBookingData builderPartialBookingData = new BuildPartialBookingData();
@@ -58,7 +59,7 @@ public class putBooking extends BaseSetup {
         given().body(partialBookingWithoutAdditionalNeedsObject)
                 .when()
                 .header("Cookie", "token="+ GenerateToken.generateValidToken())
-                .put("/booking/"+booking)
+                .put("/booking/"+bookingID)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .and()
@@ -69,13 +70,13 @@ public class putBooking extends BaseSetup {
                         "depositpaid",equalTo(partialBookingWithoutAdditionalNeedsObject.isDepositpaid()),
                         "bookingdates.checkin",equalTo(partialBookingWithoutAdditionalNeedsObject.getBookingdates().getCheckin()),
                         "bookingdates.checkout",equalTo(partialBookingWithoutAdditionalNeedsObject.getBookingdates().getCheckout()),
-                        "additionalneeds",equalTo(GenerateBooking.bookingObjectGenerated.getAdditionalneeds()))
+                        "additionalneeds",equalTo(bookingInformation.getAdditionalneeds()))
                 .extract().asString();
     }
     @Test (groups = "Exception")
     public void updateErrorBookintTestJustNamesAndPrice(){
         //Creating a booking
-        int booking = GenerateBooking.generateBookingValid();
+        int bookingID = GenerateBooking.generateBookingValid();
 
         //Updating the booking
         BuildPartialBookingData builderBookingPartialData = new BuildPartialBookingData();
@@ -85,14 +86,14 @@ public class putBooking extends BaseSetup {
         given().body(partialBookingNamesAndPriceObject)
                 .when()
                 .header("Cookie", "token="+ GenerateToken.generateValidToken())
-                .put("/booking/"+booking)
+                .put("/booking/"+bookingID)
                 .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST);
     }
     @Test (groups = "Exception")
     public void updateErrorAIdNonexistent(){
         //Creating a booking
-        int booking = 1;
+        int bookingID = 1;
         //Updating the booking
         BuildBookingData builderBookingData = new BuildBookingData();
         bookingObject = builderBookingData.BookingDataBuilderDepositPaidFalse();
@@ -101,7 +102,7 @@ public class putBooking extends BaseSetup {
         given().body(bookingObject)
                 .when()
                 .header("Cookie", "token="+ GenerateToken.generateValidToken())
-                .put("/booking/"+booking)
+                .put("/booking/"+bookingID)
                 .then()
                 .statusCode(HttpStatus.SC_NOT_FOUND);
     }
