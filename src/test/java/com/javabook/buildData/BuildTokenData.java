@@ -1,5 +1,4 @@
 package com.javabook.buildData;
-
 import com.javabook.objects.TokenObject;
 
 public class BuildTokenData{
