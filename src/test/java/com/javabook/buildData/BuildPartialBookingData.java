@@ -7,7 +7,23 @@ import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
 public class BuildPartialBookingData {
-    public PartialBookingNamesAndPriceObject PartialBookingDataBuilderNamesAndPrice (){ //400 - Bad request
+    public PartialBookingWithoutAdditionalNeedsObject PartialBookingDataBuilderWithoutAddicionalNeeds(){//200 - OK
+        Faker faker = Faker.instance();
+        SimpleDateFormat formatterDate = new SimpleDateFormat("YYYY-MM-dd");
+
+        return PartialBookingWithoutAdditionalNeedsObject.builder()
+                .firstname(faker.name().firstName())
+                .lastname(faker.name().lastName())
+                .totalprice(faker.number().numberBetween(50,100))
+                .depositpaid(true)
+                .bookingdates(BookingDatesObject.builder()
+                        .checkin(formatterDate.format(faker.date()
+                                .past(20, TimeUnit.DAYS)))
+                        .checkout(formatterDate.format(faker.date().future(10, TimeUnit.DAYS)))
+                        .build())
+                .build();
+    }
+    public PartialBookingNamesAndPriceObject PartialBookingDataBuilderNamesAndPrice (){//400-[POST]Bad request
         Faker faker = Faker.instance();
 
         return PartialBookingNamesAndPriceObject.builder()
@@ -16,7 +32,7 @@ public class BuildPartialBookingData {
                 .totalprice(faker.number().numberBetween(1,200))
                 .build();
     }
-    public PartialBookingWithoutChekoutObject PartialBookingDataBuilderWithoutCheckout (){ //400 - Bad Request
+    public PartialBookingWithoutChekoutObject PartialBookingDataBuilderWithoutCheckout (){//400-[POST]Bad request
         Faker faker = Faker.instance();
         SimpleDateFormat formatterDate = new SimpleDateFormat("YYYY-MM-dd");
 
@@ -32,7 +48,7 @@ public class BuildPartialBookingData {
                 .additionalneeds("Movie")
                 .build();
     }
-    public PartialBookingWithoutDatesObject PartialBookingDataBuilderWithoutDates (){ //400 - Bad request
+    public PartialBookingWithoutDatesObject PartialBookingDataBuilderWithoutDates (){//400-[POST]Bad request
         Faker faker = Faker.instance();
 
         return PartialBookingWithoutDatesObject.builder()
@@ -43,7 +59,7 @@ public class BuildPartialBookingData {
                 .additionalneeds("Wine")
                 .build();
     }
-    public PartialBookingWithoutLastNameObject PartialBookingDataBuilderWithoutLastName(){ //400 - Bad Request
+    public PartialBookingWithoutLastNameObject PartialBookingDataBuilderWithoutLastName(){//400-[POST]Bad request
         Faker faker = Faker.instance();
         SimpleDateFormat formatterDate = new SimpleDateFormat("YYYY-MM-dd");
 

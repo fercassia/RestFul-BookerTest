@@ -1,13 +1,10 @@
-package com.javabook.token;
+package com.javabook.generate;
 
 import com.javabook.bases.BaseSetup;
 import com.javabook.buildData.BuildTokenData;
 import com.javabook.objects.TokenObject;
-import org.apache.http.HttpStatus;
 
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.nullValue;
 
 public class GenerateToken extends BaseSetup {
 
