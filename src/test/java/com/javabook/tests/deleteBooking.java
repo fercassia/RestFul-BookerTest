@@ -8,10 +8,10 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class deletBooking extends BaseSetup {
+public class deleteBooking extends BaseSetup {
     //Creating a booking
     @Test(groups = "Main")
-    public void deletBookintWithSuccess(){
+    public void deleteBookintWithSuccess(){
         //Creating a booking
         int bookingID = GenerateBooking.generateBookingValid();
 
@@ -22,7 +22,7 @@ public class deletBooking extends BaseSetup {
                 .statusCode(HttpStatus.SC_OK);
     }
     @Test(groups = "Alternative")
-    public void deletBookintThatNotExist(){
+    public void deleteBookintThatNotExist(){
         int idBookingNotAvailable = 0;
         //Verify Deleting A Book
         given().header("Cookie", "token="+ GenerateToken.generateValidToken())
