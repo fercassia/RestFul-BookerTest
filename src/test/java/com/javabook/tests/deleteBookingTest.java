@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class deleteBooking extends BaseSetup {
+public class deleteBookingTest extends BaseSetup {
     //Creating a booking
     @Test(groups = "Main")
     public void deleteBookintWithSuccess(){

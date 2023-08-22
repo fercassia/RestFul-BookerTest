@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class getBooking extends BaseSetup {
+public class getBookingTest extends BaseSetup {
     @Test(groups = "Main")
     public void getBookingsExisting(){
         //Creating A booking to verify the list
